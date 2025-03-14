@@ -1,14 +1,13 @@
-```mermaid
 graph TD;
     %% USERS %%
-    A[Student] -->|Sign In (Student Number + Password)| AuthServer
+    A[Student] -->|Sign In: Student Number + Password| AuthServer
     A -->|View| G[Grades]
     A -->|View| C[Courses]
     A -->|View| P[Programs]
     A -->|View| AN[Announcements]
     A -->|Update| UP[Profile]
     A -->|Request| RC[Grade Consultation]
-    A -->|Request| RD[Documents (COR, COE, TOR)]
+    A -->|Request| RD[Documents: COR, COE, TOR]
 
     B[Faculty] -->|View| AC[Advisory Class]
     B -->|Manage| HC[Handled Courses]
@@ -27,18 +26,18 @@ graph TD;
     C -->|Backup| BDB[Backup Database]
 
     D[Superadmin] -->|Full Access| RegistrarModules
-    D -->|Manage| UA[User Accounts (Password Reset)]
+    D -->|Manage| UA[User Accounts - Password Reset]
 
     %% SYSTEM BACKEND %%
-    subgraph "Backend (Next.js API Routes & NextAuth.js)"
-        AuthServer["Auth Service (NextAuth.js + JOSE)"]
-        API["Main API (Next.js API Routes)"]
-        DB["Database (Supabase / PostgreSQL)"]
+    subgraph "Backend - Next.js API & NextAuth.js"
+        AuthServer["Auth Service: NextAuth.js + JOSE"]
+        API["Main API - Next.js API Routes"]
+        DB["Database - Supabase / PostgreSQL"]
         Reports["Reports & Analytics Module"]
     end
 
-    AuthServer -->|JWT (JOSE)| API
-    API -->|CRUD Operations (Axios)| DB
+    AuthServer -->|JWT - JOSE| API
+    API -->|CRUD Operations - Axios| DB
     API -->|Generate| Reports
 
     %% SYSTEM INTERACTIONS %%
