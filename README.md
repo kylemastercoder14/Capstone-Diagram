@@ -1,3 +1,4 @@
+```mermaid
 graph TD;
     %% USERS %%
     A[Student] -->|Sign In (Student Number + Password)| AuthServer
